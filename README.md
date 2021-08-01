@@ -55,19 +55,17 @@ $base64_favicon = 'H4sIAAAAAAAAA2NgYARCAQEGIKnAkMHCwCDGwMCgAc'
                 . 'RAIaAIRBwX+P///ygexaN4xGIGijAASeibMX4EAAA=';
 
 // Decode and extract
-$str_compressed = base64_decode($base64_favicon);
-$bin_image = gzdecode($str_compressed);
+$bin_favicon_gzip = base64_decode($base64_favicon);
+$bin_favicon = gzdecode($bin_favicon_gzip);
 
 // Print
 header('Content-Type: image/vnd.microsoft.icon');
-header('Content-Length: ' . strlen($bin_image));
-echo $bin_image;
+header('Content-Length: ' . strlen($bin_favicon));
+echo $bin_favicon;
 ```
 
-## Parser Script Sample
+- For the detailed usage sample see the [./sample/router.php](./sample/router.php)
 
-```php
-php -S localhost:8080 router.php
-```
-
-- [./sample/router.php](./sample/router.php)
+    ```php
+    php -S localhost:8080 router.php
+    ```
